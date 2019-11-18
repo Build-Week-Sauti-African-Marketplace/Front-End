@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Products = () => 
+const Login = () => 
 {
     return ("hi")
 }
-export default Products
+
+export default Login
