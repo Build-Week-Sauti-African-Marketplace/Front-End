@@ -1,0 +1,41 @@
+.login {
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    font-size: 20px;
+    height: 90vh;
+    /* background: green */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container {
+    background: rgb(151, 235, 247);
+    border-radius: 10px;
+    box-shadow: 5px 5px rgb(230, 230, 230);
+    padding: 50px 0;
+}
+.formLogin {
+    display: flex; 
+    flex-direction: column;
+}
+.user, .pass {
+    /* margin: 10px 115px; */
+    margin: 10px 0 10px 100px;
+}
+.input {
+    max-width: 200px;
+    height: 15px;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 8px;
+}
+.loginButton {
+    margin: 25px auto;
+    cursor: pointer;
+    background: white;
+    border-radius: 8px;
+    width: 175px;
+    height: 40px;
+}
