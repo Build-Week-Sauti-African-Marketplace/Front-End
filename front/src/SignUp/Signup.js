@@ -1,59 +1,66 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import Api from "../Api"
 import "./Signup.css";
 
 export default function Signup() {
   const [form, setForm] = useState({
     username: "",
     password: "",
-    name: "",
-    email: ""
+    // name: "",
+    // email: ""
   });
 
   const handleChange = e => {
-    const { name, value } = e.target;
+    // const { name, value } = e.target;
 
-    switch (name) {
-      case "name":
-        if (/^[a-zA-Z]*$/.test(value))
-          setForm({
-            ...form,
-            [name]: value
-          });
-        break;
-      case "username":
-        if (/^[a-zA-Z0-9_-]*$/.test(value))
-          setForm({
-            ...form,
-            [name]: value
-          });
-        break;
-      case "password":
-        setForm({
-          ...form,
-          [name]: value
-        });
-        break;
-      case "email":
-        setForm({
-          ...form,
-          [name]: value
-        });
-        break;
-      default:
-        setForm({
-          ...form,
-          [name]: value
-        });
-        break;
-    }
+    // switch (name) {
+    //   case "name":
+    //     if (/^[a-zA-Z]*$/.test(value))
+    //       setForm({
+    //         ...form,
+    //         [name]: value
+    //       });
+    //     break;
+    //   case "username":
+    //     if (/^[a-zA-Z0-9_-]*$/.test(value))
+    //       setForm({
+    //         ...form,
+    //         [name]: value
+    //       });
+    //     break;
+    //   case "password":
+    //     setForm({
+    //       ...form,
+    //       [name]: value
+    //     });
+    //     break;
+    //   case "email":
+    //     setForm({
+    //       ...form,
+    //       [name]: value
+    //     });
+    //     break;
+    //   default:
+    //     setForm({
+    //       ...form,
+    //       [name]: value
+    //     });
+    //     break;
+    // }
+    e.preventDefault()
+setForm({...form,[e.target.name]:e.target.value})
+   console.log(form)
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log(form);
-    setForm({ username: "", password: "", name: "", email: "" });
+    axios.post("https://africanmarketplace.herokuapp.com/createnewuser",form)
+.then(res => console.log(res.data))
+.catch(err => console.log(err))
+    setForm({ username: "", password: ""});
+
   };
 
   return (
@@ -79,7 +86,7 @@ export default function Signup() {
           value={form.password}
           required
         />
-        <label htmlFor="name">Name:</label>
+        {/* <label htmlFor="name">Name:</label>
         <input
           id="name"
           name="name"
@@ -97,7 +104,7 @@ export default function Signup() {
           placeholder="Email"
           value={form.email}
           required
-        />
+        /> */}
         <button>Submit</button>
       </form>
     </div>
