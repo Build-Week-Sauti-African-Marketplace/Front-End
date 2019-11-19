@@ -1,6 +1,5 @@
 [build]
-  command="npm install"
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish="/front/src/build"
   base = "/front/src"
 
