@@ -18,7 +18,8 @@ function App() {
       <Link to="/home">Home</Link>
       <Link to="/signup"> Sign Up</Link>
       <Link to="/login"> Log In</Link>
-     
+      <Link to="/profile"> Profile </Link>
+      <Link to="/addProducts"> Add Products</Link>
 
       <Route exact path="/login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
