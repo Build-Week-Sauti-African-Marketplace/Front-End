@@ -1,9 +1,9 @@
 [build]
   command = "npm run build"
-  publish="/front/src/build"
-  base = "/front/src"
+  publish="front/src/build"
+  base = "front/src"
 
   [[redirects]]
   from = "/*"
-  to = "/front/public/index.html"
+  to = "front/public/index.html"
   status = 200
