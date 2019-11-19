@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css';
-// import Profile from "../profile"
+import Profile from "../Profile"
 function Login(props) {
    const [loginForm, setLoginForm] = useState({
        userName: '',
@@ -14,6 +14,7 @@ function Login(props) {
    }
    const submitForm = e => {
        e.preventDefault();
+       props.history.push(`/profile/${loginForm.userName}`)
        axios.post("http://africanmarketplace.herokuapp.com/login",
        `grant_type=password&username=${loginForm.userName}&password=${loginForm.password}`,
 
@@ -27,7 +28,11 @@ function Login(props) {
             
       },
       )
-      .then(res => console.log(res.data))
+      .then(res => {
+        localStorage.setItem("token",res.data.access_token)
+        props.history.push(`/profile/${loginForm.userName}`)
+        console.log(res.data)
+      })
       .catch(err => console.log(err))
        setLoginForm({
            userName: '',
