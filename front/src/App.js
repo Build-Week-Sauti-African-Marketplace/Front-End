@@ -24,10 +24,10 @@ function App() {
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path="/login" component={Login} />
 
-      <ProtectedRoute exact path="/profile/:username" component={Profile} />
-      <ProtectedRoute exact path="/profile" component={Profile} />
+      <Route exact path="/profile/:username" component={Profile} />
+      <Route exact path="/profile" component={Profile} />
 
-      <ProtectedRoute exact path="/addProducts" component={AddProducts} />
+      <Route exact path="/addProducts" component={AddProducts} />
     </div>
   );
 }
