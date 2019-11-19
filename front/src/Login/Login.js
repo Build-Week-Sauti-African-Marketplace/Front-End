@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Login.css';
-import Profile from "../profile"
+// import Profile from "../profile"
 function Login(props) {
    const [loginForm, setLoginForm] = useState({
        userName: '',
