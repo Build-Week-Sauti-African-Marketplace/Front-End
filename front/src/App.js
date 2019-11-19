@@ -15,20 +15,20 @@ import ProtectedRoute from "./ProtectedRoute";
 function App() {
   return (
     <div>
-      <Link to="/home">Home</Link>
+      <Link to="/">Home</Link>
       <Link to="/signup"> Sign Up</Link>
       <Link to="/login"> Log In</Link>
-      <Link to="/profile"> Profile </Link>
-      <Link to="/addProducts"> Add Products</Link>
-
+     <Link to={`/profile/${localStorage.getItem("name")}`}>Profile</Link>
+     <Link to="/addProducts"> Add a product</Link>
+     
       <Route exact path="/login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path="/login" component={Login} />
 
-      <Route exact path="/profile/:username" component={Profile} />
-      <Route exact path="/profile" component={Profile} />
+      <ProtectedRoute exact path={`/profile/${localStorage.getItem("name")}`} component={Profile} />
+      <ProtectedRoute exact path="/profile" component={Profile} />
 
-      <Route exact path="/addProducts" component={AddProducts} />
+      <ProtectedRoute exact path="/addProducts" component={AddProducts} />
     </div>
   );
 }

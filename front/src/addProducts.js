@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react"
 import axios from "axios"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const AddProducts = props => 
 
@@ -47,8 +48,10 @@ const handleSubmit = e => {
     .then(res => console.log(res.data))
     .catch(err => console.log(err))
 }
-    return (<form onSubmit={handleSubmit}> 
-   
+    return (
+       
+    <form onSubmit={handleSubmit}> 
+    
 <input placeholder="name" name="name" value={addedProduct.name} onChange={handleChange}></input>
 <input placeholder="location" name="location" value={addedProduct.location} onChange={handleChange}></input>
 <input placeholder="description" name="description" value={addedProduct.description} onChange={handleChange}></input>

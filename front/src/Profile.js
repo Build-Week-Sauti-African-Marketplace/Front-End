@@ -14,6 +14,7 @@ const Profile = props =>
         })
         .then(res => {
             localStorage.removeItem("token")
+            localStorage.removeItem("name")
             props.history.push("/")
             console.log(res.data)})
         .catch(err => console.log(err))
@@ -21,8 +22,6 @@ const Profile = props =>
     }
     return (
         <div>
-        <Link to="/profile"> Profile </Link>
-        <Link to="/addProducts"> Add Products</Link>
 
         <button onClick={logOut}>Log out</button>
         </div>
