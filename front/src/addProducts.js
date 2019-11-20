@@ -107,7 +107,7 @@ const AddProducts = props => {
                         setAddedProduct(
                             { ...addedProduct, category: { type: e.target.value } }
                         )}
-                    value={addedProduct.categories}
+                    value={addedProduct.category}
                 >
                     {categories.map(i =>
                         <MenuItem key={categories.indexOf(i)}>{i.type}</MenuItem>
@@ -119,7 +119,7 @@ const AddProducts = props => {
                     name="currency" onChange={(e) =>
                         setAddedProduct({ ...addedProduct, currency: { code: e.target.value } }
                         )}
-                    value={addedProduct.currencies}
+                    value={addedProduct.currency}
                 >
                     {currencies.map(i =>
                         <MenuItem key={currencies.indexOf(i)}>{i.code}</MenuItem>
