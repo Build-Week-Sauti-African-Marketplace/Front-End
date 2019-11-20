@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-// import { StyledForm, StyledDiv, Container } from './addProductsStyled'
-// import './addProducts.css'
-
 import { useStyles, StyledDiv } from './addProductsStyled'
 
 
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 
 const AddProducts = props => {
     const classes = useStyles();
@@ -114,7 +112,8 @@ const AddProducts = props => {
                         <MenuItem key={categories.indexOf(i)}>{i.type}</MenuItem>
                     )}
                 </TextField>
-                <TextField className={classes.textField}
+                <TextField 
+                    className={classes.textField}
                     select
                     placeholder="category"
                     name="currency" onChange={(e) =>
@@ -126,7 +125,7 @@ const AddProducts = props => {
                         <MenuItem key={currencies.indexOf(i)}>{i.code}</MenuItem>
                     )}
                 </TextField>
-                <button>Submit</button>
+                <Button className={classes.button}>Submit</Button>
             </StyledDiv>
         </form>)
 }

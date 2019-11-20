@@ -14,6 +14,9 @@ export const useStyles = makeStyles(theme => ({
       width: 200,
       margin: '10px !important',
     },
+    button: {
+      margin: '25px !important'
+    }
 }));
 
 export const StyledDiv = styled.div`
@@ -22,7 +25,7 @@ export const StyledDiv = styled.div`
     justify-content: center;
     align-items: center;
     width: 500px;
-    height: 500px;
+    height: 600px;
     background: #EAEBED;
     box-shadow: 7px 7px #393E41;
     border-radius: 15px;
