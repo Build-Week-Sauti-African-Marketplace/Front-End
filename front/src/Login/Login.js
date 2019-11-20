@@ -12,7 +12,7 @@ function Login(props) {
        setLoginForm({...loginForm,[e.target.name]:e.target.value})
    }
    const submitForm = e => {
-       e.preventDefault();
+      
        axios.post("http://africanmarketplace.herokuapp.com/login",
        `grant_type=password&username=${loginForm.userName}&password=${loginForm.password}`,
 
@@ -26,12 +26,20 @@ function Login(props) {
             
       },
       )
-      .then(res => console.log(res.data))
+      .then(res => {
+        localStorage.setItem("name",loginForm.userName)
+        localStorage.setItem("token",res.data.access_token)
+        props.history.push(`/profile/${loginForm.userName}`)
+        console.log(res.data)
+      })
       .catch(err => console.log(err))
        setLoginForm({
            userName: '',
            password: ''
        })
+       e.preventDefault()
+       props.history.push(`/profile/${localStorage.getItem("name")}`)
+
    }
    return (
        <div className='login'>
