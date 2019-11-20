@@ -1,10 +1,11 @@
-import React from "react"
+import React,{useState,useEffect} from "react"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from "axios";
 
 
 const Profile = props =>
 {
+    const [products,setProducts] = useState([])
     const logOut = e => {
         e.preventDefault()
         axios.get("https://africanmarketplace.herokuapp.com/logout",
@@ -14,17 +15,30 @@ const Profile = props =>
         })
         .then(res => {
             localStorage.removeItem("token")
+            localStorage.removeItem("name")
             props.history.push("/")
             console.log(res.data)})
         .catch(err => console.log(err))
         
     }
+    useEffect(()=>{
+axios.get("https://africanmarketplace.herokuapp.com/items/useritems",{
+    headers:{
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+    }
+},[])
+.then(res => setProducts(res.data))
+
+    },[])
+    
+   
     return (
         <div>
-        <Link to="/profile"> Profile </Link>
-        <Link to="/addProducts"> Add Products</Link>
+           
+<h1>{`Welcome Back ${localStorage.getItem("name")}`}</h1>
 
-        <button onClick={logOut}>Log out</button>
+{products.map(i => <p key={i.itemid}>{<Link to={`/item/${i.itemid}`}>{i.name}</Link> }</p>)}
+       
         </div>
     )
 }
