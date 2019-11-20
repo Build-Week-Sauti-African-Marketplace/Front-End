@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -40,7 +39,6 @@ function App(props) {
     <div>
       <nav className="navbar">
         <div className="nav-list">
-          <Link to="/">Home</Link>
           <NavLink to="/signup" activeClassName="active">
             Sign Up
           </NavLink>
@@ -66,12 +64,12 @@ function App(props) {
       <Route path="/products" component={Products}></Route>
       <Route exact path="/login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
-      <ProtectedRoute exact path="/search" component={Search} />
+      <Route exact path="/search" component={Search} />
 
-      <ProtectedRoute exact path={`/profile/:username`} component={Profile} />
-      <ProtectedRoute exact path="/profile" component={Profile} />
-      <ProtectedRoute exact path={`/item/:itemid`} component={Item} />
-      <ProtectedRoute exact path="/addProducts" component={AddProducts} />
+      <Route exact path={`/profile/:username`} component={Profile} />
+      <Route exact path="/profile" component={Profile} />
+      <Route exact path={`/item/:itemid`} component={Item} />
+      <Route exact path="/addProducts" component={AddProducts} />
     </div>
   );
 }
