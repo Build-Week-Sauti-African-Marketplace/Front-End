@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -40,7 +39,6 @@ function App(props) {
     <div>
       <nav className="navbar">
         <div className="nav-list">
-          <Link exact to="/">Home</Link>
           <NavLink to="/signup" activeClassName="active">
             Sign Up
           </NavLink>
