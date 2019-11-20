@@ -5,10 +5,11 @@ body {
 
 .navbar {
   background-image: linear-gradient(135deg, #893825 0%, #110402db 100%);
+  border: 30px solid;
   border-image-source: url("/assets/img/border.png");
   border-image-slice: 61;
   border-image-width: 30px;
-  border-width: 30px;
+  border-image-outset: 0;
   border-image-repeat: round;
   padding: 30px;
 }
