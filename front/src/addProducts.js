@@ -56,10 +56,10 @@ const handleSubmit = e => {
 <input placeholder="location" name="location" value={addedProduct.location} onChange={handleChange}></input>
 <input placeholder="description" name="description" value={addedProduct.description} onChange={handleChange}></input>
 <input placeholder="price" name="price" value={addedProduct.price} onChange={handleChange}></input>
-<select placeholder="category" name="category" onChange={(e) => setAddedProduct({...addedProduct,category:{type:e.target.value}})} value={addedProduct.categories}>
+<select placeholder="category" name="category" onChange={(e) => setAddedProduct({...addedProduct,category:{type:e.target.value}})} value={addedProduct.category}>
   {categories.map(i => <option key={categories.indexOf(i)}>{i.type}</option>)}
    </select>
-   <select placeholder="category" name="currency" onChange={(e) => setAddedProduct({...addedProduct,currency:{code:e.target.value}})} value={addedProduct.currencies}>
+   <select placeholder="category" name="currency" onChange={(e) => setAddedProduct({...addedProduct,currency:{code:e.target.value}})} value={addedProduct.currency}>
   {currencies.map(i => <option key={currencies.indexOf(i)}>{i.code}</option>)}
    </select>
 <button>Submit</button>
