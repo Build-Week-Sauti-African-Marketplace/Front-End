@@ -66,12 +66,12 @@ function App(props) {
       <Route path="/products" component={Products}></Route>
       <Route exact path="/login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
-      <ProtectedRoute exact path="/search" component={Search} />
+      <Route exact path="/search" component={Search} />
 
-      <ProtectedRoute exact path={`/profile/:username`} component={Profile} />
-      <ProtectedRoute exact path="/profile" component={Profile} />
-      <ProtectedRoute exact path={`/item/:itemid`} component={Item} />
-      <ProtectedRoute exact path="/addProducts" component={AddProducts} />
+      <Route exact path={`/profile/:username`} component={Profile} />
+      <Route exact path="/profile" component={Profile} />
+      <Route exact path={`/item/:itemid`} component={Item} />
+      <Route exact path="/addProducts" component={AddProducts} />
     </div>
   );
 }
