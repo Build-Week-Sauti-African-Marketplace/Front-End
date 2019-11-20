@@ -40,7 +40,7 @@ function App(props) {
     <div>
       <nav className="navbar">
         <div className="nav-list">
-          <Link to="/">Home</Link>
+          <Link exact to="/">Home</Link>
           <NavLink to="/signup" activeClassName="active">
             Sign Up
           </NavLink>
