@@ -5,6 +5,7 @@ import { useStyles, StyledDiv } from './addProductsStyled'
 
 
 import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 
@@ -97,9 +98,8 @@ const AddProducts = props => {
                     value={addedProduct.price}
                     onChange={handleChange}>
                 </TextField>
-                <TextField
+                <Select
                     className={classes.textField}
-                    select
                     placeholder="category"
                     name="category"
                     onChange={(e) =>
@@ -111,10 +111,10 @@ const AddProducts = props => {
                     {categories.map(i =>
                         <MenuItem key={categories.indexOf(i)}>{i.type}</MenuItem>
                     )}
-                </TextField>
-                <TextField 
+                </Select>
+                <Select
                     className={classes.textField}
-                    select
+
                     placeholder="category"
                     name="currency" onChange={(e) =>
                         setAddedProduct({ ...addedProduct, currency: { code: e.target.value } }
@@ -124,7 +124,7 @@ const AddProducts = props => {
                     {currencies.map(i =>
                         <MenuItem key={currencies.indexOf(i)}>{i.code}</MenuItem>
                     )}
-                </TextField>
+                </Select>
                 <Button className={classes.button}>Submit</Button>
             </StyledDiv>
         </form>)
