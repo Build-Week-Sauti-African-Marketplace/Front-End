@@ -13,7 +13,7 @@ function Login(props) {
    }
    const submitForm = e => {
       
-       axios.post("http://africanmarketplace.herokuapp.com/login",
+       axios.post("https://africanmarketplace.herokuapp.com/login",
        `grant_type=password&username=${loginForm.userName}&password=${loginForm.password}`,
 
       {

@@ -22,7 +22,13 @@ body {
   align-items: center;
 }
 
-.navbar > .nav-list > a {
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.navbar > .nav-list > a,
+.navbar > .nav-list > button {
+  background-color: transparent;
   text-decoration: none;
   text-transform: capitalize;
   font-size: 3rem;
@@ -35,9 +41,11 @@ body {
   word-break: keep-all;
 }
 
-.navbar > .nav-list > a.active {
+.navbar > .nav-list > a.active,
+.navbar > .nav-list > button a.active {
   color: #953333;
 }
-.navbar > .nav-list > a:hover {
+.navbar > .nav-list > a:hover,
+.navbar > .nav-list > button a:hover {
   color: #c74646;
 }

@@ -55,11 +55,11 @@ function App(props) {
             Add Products
           </NavLink>
           <Link to="/search"> Delete a product </Link>
+          <button onClick={logOut}>
+            <Link to="/">Log Out</Link>
+          </button>
         </div>
       </nav>
-      <button onClick={logOut}>
-        <Link to="/">Log Out</Link>
-      </button>
       <Route exact path="/item" component={Item} />
       <Route path="/products" component={Products}></Route>
       <Route exact path="/login" component={Login} />
