@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 export const useStyles = makeStyles(theme => ({
     container: {
-      height: '98vh',
+      height: '87.1vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+      background: 'linear-gradient(#08415C, #1493ce)',
     },
     textField: {
       width: 200,
