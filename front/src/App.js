@@ -54,7 +54,7 @@ function App(props) {
           <NavLink to="/addProducts" activeClassName="active">
             Add Products
           </NavLink>
-          <Link to="/search"> Delete a product </Link>
+          <Link to="/delete"> Delete a product </Link>
           <button onClick={logOut}>
             <Link to="/">Log Out</Link>
           </button>
@@ -64,12 +64,12 @@ function App(props) {
       <Route path="/products" component={Products}></Route>
       <Route exact path="/login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
-      <Route exact path="/search" component={Search} />
+      <ProtectedRoute exact path="/delete" component={Search} />
 
-      <Route exact path={`/profile/:username`} component={Profile} />
-      <Route exact path="/profile" component={Profile} />
-      <Route exact path={`/item/:itemid`} component={Item} />
-      <Route exact path="/addProducts" component={AddProducts} />
+      <ProtectedRoute exact path={`/profile/:username`} component={Profile} />
+      <ProtectedRoute exact path="/profile" component={Profile} />
+      <ProtectedRoute exact path={`/item/:itemid`} component={Item} />
+      <ProtectedRoute exact path="/addProducts" component={AddProducts} />
     </div>
   );
 }

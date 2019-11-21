@@ -49,7 +49,7 @@ const AddProducts = props => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        axios.post("https://africanmarketplace.herokuapp.com/items/item", addedProduct, {
+        axios.post("https://africanmarketplace.herokuapp.com/items/item", addedProduct,{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
                 "Content-Type": "application/json"
@@ -60,87 +60,19 @@ const AddProducts = props => {
     }
     return (
 
-        <form onSubmit={handleSubmit} className={classes.container}>
-            <StyledDiv>
-                <TextField
-                    className={classes.textField}
-                    label='name'
-                    variant="outlined"
-                    placeholder="name"
-                    name="name"
-                    value={addedProduct.name}
-                    onChange={handleChange}>
-                </TextField>
-                <TextField
-                    className={classes.textField}
-                    label='location'
-                    variant="outlined"
-                    placeholder="location"
-                    name="location"
-                    value={addedProduct.location}
-                    onChange={handleChange}>
-                </TextField>
-                <TextField
-                    className={classes.textField}
-                    label='description'
-                    multiline
-                    rows='4'
-                    variant="outlined"
-                    placeholder="description"
-                    name="description" value={addedProduct.description}
-                    onChange={handleChange}>
-                </TextField>
-                <TextField
-                    className={classes.textField}
-                    label='price'
-                    variant="outlined"
-                    placeholder="price"
-                    name="price"
-                    value={addedProduct.price}
-                    onChange={handleChange}>
-                </TextField>
-                <Select
-                    className={classes.textField}
-                    placeholder="category"
-                    name="category"
-                    onChange={(e) =>
-                        setAddedProduct(
-                            { ...addedProduct, category: { type: e.target.value } }
-                        )}
-                    value={addedProduct.category}
-                >
-                    {categories.map(i =>
-                        <MenuItem key={categories.indexOf(i)}>{i.type}</MenuItem>
-                    )}
-                </Select>
-                <Select
-                    className={classes.textField}
-                    placeholder="category"
-                    name="currency" onChange={(e) =>
-                        setAddedProduct({ ...addedProduct, currency: { code: e.target.value } }
-                        )}
-                    value={addedProduct.currency}
-                >
-                    {currencies.map(i =>
-                        <MenuItem key={currencies.indexOf(i)}>{i.code}</MenuItem>
-                    )}
-                </Select>
-                <Button className={classes.button}>Submit</Button>
-            </StyledDiv>
+        <form onSubmit={handleSubmit}> 
+        
+        <input placeholder="name" name="name" value={addedProduct.name} onChange={handleChange}></input>
+        <input placeholder="location" name="location" value={addedProduct.location} onChange={handleChange}></input>
+        <input placeholder="description" name="description" value={addedProduct.description} onChange={handleChange}></input>
+        <input placeholder="price" name="price" value={addedProduct.price} onChange={handleChange}></input>
+        <select placeholder="category" name="category" onChange={(e) => setAddedProduct({...addedProduct,category:{type:e.target.value}})} value={addedProduct.category}>
+          {categories.map(i => <option key={categories.indexOf(i)}>{i.type}</option>)}
+           </select>
+           <select placeholder="category" name="currency" onChange={(e) => setAddedProduct({...addedProduct,currency:{code:e.target.value}})} value={addedProduct.currency}>
+          {currencies.map(i => <option key={currencies.indexOf(i)}>{i.code}</option>)}
+           </select>
+        <button>Submit</button>
         </form>
     )}
 export default AddProducts
-
-//     <form onSubmit={handleSubmit}> 
-        
-    // <input placeholder="name" name="name" value={addedProduct.name} onChange={handleChange}></input>
-    // <input placeholder="location" name="location" value={addedProduct.location} onChange={handleChange}></input>
-    // <input placeholder="description" name="description" value={addedProduct.description} onChange={handleChange}></input>
-    // <input placeholder="price" name="price" value={addedProduct.price} onChange={handleChange}></input>
-    // <select placeholder="category" name="category" onChange={(e) => setAddedProduct({...addedProduct,category:{type:e.target.value}})} value={addedProduct.category}>
-    //   {categories.map(i => <option key={categories.indexOf(i)}>{i.type}</option>)}
-    //    </select>
-    //    <select placeholder="category" name="currency" onChange={(e) => setAddedProduct({...addedProduct,currency:{code:e.target.value}})} value={addedProduct.currency}>
-    //   {currencies.map(i => <option key={currencies.indexOf(i)}>{i.code}</option>)}
-    //    </select>
-    // <button>Submit</button>
