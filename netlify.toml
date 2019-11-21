@@ -2,8 +2,3 @@
   command = "npm run build"
   publish="/build"
   base = "/front"
-
-[[redirects]]
-  from = "/*"
-  to = "/public/index.html"
-  status = 200
