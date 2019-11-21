@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-
+import styled from 'styled-components'
 import "./item.css";
 
+const Img = styled.img`
+height:50%;
+width:70%
+`
 const Item = props => {
   const id = props.match.params.itemid;
   const [itemData, setItemData] = useState({});
@@ -101,7 +105,7 @@ const Item = props => {
             <h1>{itemData.name}</h1>
             <p>Price: ${itemData.price}</p>
             <p>Location: {itemData.location}</p>
-            {/* <p>{itemData.category.type}</p> */}
+            <Img src={itemData.url} />
             <p>Description: {itemData.description}</p>
           </>
         )}

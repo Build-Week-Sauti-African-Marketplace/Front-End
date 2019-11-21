@@ -10,6 +10,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 
+
+
 const AddProducts = props => {
     const classes = useStyles();
 
@@ -20,11 +22,12 @@ const AddProducts = props => {
         description: "",
         price: "",
         currency: "",
-        category: ""
+        category: "",
+        // url:""
     })
     const [categories, setCategories] = useState([])
     const [currencies, setCurrencies] = useState([])
-
+    const [form,setForm] = useState({})
     useEffect(() => {
         axios.get("https://africanmarketplace.herokuapp.com/categories", {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
@@ -46,9 +49,30 @@ const AddProducts = props => {
         setAddedProduct({ ...addedProduct, [e.target.name]: e.target.value })
         console.log(addedProduct)
     }
+    const handleImage = e => {
+        e.preventDefault()
+        const formData = new FormData();
+        formData.append("file", e.target.files[0])
+        axios.post("https://africanmarketplace.herokuapp.com/image/upload",formData,
+        {
+            headers:{
+             Authorization:`Bearer ${localStorage.getItem("token")}`,
+             "Content-Type": "multipart/form-data"}
+        
+            
+        },)
+        .then(res => {
+            console.log(res.data.url)
+        setAddedProduct({...addedProduct,url:res.data.url})
+        })
+        .catch(err => console.log(err))
+    }
 
     const handleSubmit = e => {
         e.preventDefault()
+       if(addedProduct.url === ""){
+           setAddedProduct({...addedProduct,url:null})
+       }
         axios.post("https://africanmarketplace.herokuapp.com/items/item", addedProduct,{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -67,11 +91,13 @@ const AddProducts = props => {
         <input placeholder="description" name="description" value={addedProduct.description} onChange={handleChange}></input>
         <input placeholder="price" name="price" value={addedProduct.price} onChange={handleChange}></input>
         <select placeholder="category" name="category" onChange={(e) => setAddedProduct({...addedProduct,category:{type:e.target.value}})} value={addedProduct.category}>
+
           {categories.map(i => <option key={categories.indexOf(i)}>{i.type}</option>)}
            </select>
            <select placeholder="category" name="currency" onChange={(e) => setAddedProduct({...addedProduct,currency:{code:e.target.value}})} value={addedProduct.currency}>
           {currencies.map(i => <option key={currencies.indexOf(i)}>{i.code}</option>)}
            </select>
+           <input type="file" placeholder={"Submit Photo"} onChange={handleImage}/>
         <button>Submit</button>
         </form>
     )}
