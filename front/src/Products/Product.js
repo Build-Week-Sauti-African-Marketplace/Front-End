@@ -27,7 +27,7 @@ export default function Product({ product }) {
         <dt>Description</dt>
         <dd>{description}</dd>
         <dt>Category</dt>
-        <dd>{category.type}</dd>
+        <dd>{category && category.type}</dd>
         <dt>Currency</dt>
         <dd>code: {currency.code}</dd>
         <dd>name: {currency.name}</dd>

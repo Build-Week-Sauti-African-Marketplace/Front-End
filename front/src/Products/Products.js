@@ -9,19 +9,26 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [searchSet, setSearchSet] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState();
-
+  const [currentCategory, setCurrentCategory] = useState("");
   useEffect(_ => {
     axios
       .get("https://africanmarketplace.herokuapp.com/items/items")
       .then(res => {
+        console.log(res.data);
         setOriginal([...res.data]);
         setSearchSet([...res.data]);
         setProducts([...res.data]);
         setCategories(
-          Array.from(new Set(res.data.map(product => product.category.type)))
+          Array.from(
+            new Set(
+              res.data.map(product => {
+                if (product.category && product.category.type) {
+                  return product.category.type;
+                } else return "";
+              })
+            )
+          )
         );
-        console.log(res.data);
       });
   }, []);
 
@@ -41,10 +48,18 @@ const Products = () => {
       } else {
         setCurrentCategory(target.value);
         setProducts([
-          ...original.filter(p => p.category.type === target.value)
+          ...original.filter(p => {
+            if (p.category && p.category.type)
+              return p.category.type === target.value;
+            else return false;
+          })
         ]);
         setSearchSet([
-          ...original.filter(p => p.category.type === target.value)
+          ...original.filter(p => {
+            if (p.category && p.category.type)
+              return p.category.type === target.value;
+            else return false;
+          })
         ]);
       }
     }
@@ -56,6 +71,7 @@ const Products = () => {
       searchSet.filter(e => new RegExp(target.value, "i").test(e.name))
     );
   };
+
   return (
     <>
       <div className="products-container">
