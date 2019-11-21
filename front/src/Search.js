@@ -28,7 +28,7 @@ const handleChange = e => {
     return (
         <form onSubmit={searchItems}>
             <ul>
-            {props.data.map(i => <p key={i.itemid}> id: {i.itemid} name:{i.name}<button onClick={(e) => {
+            {props.data.map(i => <p key={i.itemid}>{i.name}<button onClick={(e) => {
                 e.preventDefault()
                 props.deleteItem(i.itemid)
                 }}>delete</button></p>)}

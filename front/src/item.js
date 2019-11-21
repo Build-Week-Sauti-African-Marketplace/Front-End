@@ -14,7 +14,8 @@ const Item = props => {
     name: "",
     description: "",
     location: "",
-    price: ""
+    price: "",
+    url:""
   });
   const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
@@ -38,8 +39,38 @@ const Item = props => {
       [e.target.name]: e.target.value
     });
   };
+  const handleImage = e => {
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append("file", e.target.files[0])
+    Axios.post("https://africanmarketplace.herokuapp.com/image/upload",formData,
+    {
+        headers:{
+         Authorization:`Bearer ${localStorage.getItem("token")}`,
+         "Content-Type": "multipart/form-data"}
+    
+        
+    },)
+    .then(res => {
+        console.log(res.data.url)
+    setEdit({...edit,url:res.data.url})
+    })
+    .catch(err => console.log(err))
+}
   const handleSubmit = e => {
     e.preventDefault();
+    if (edit.url === ""){
+      setEdit({
+        ...edit,
+        url:null
+      })
+    }
+    else if(itemData.url !== null){
+      setEdit({
+        ...edit,
+        url:itemData.url
+      })
+    }
     Axios.put(
       `https://africanmarketplace.herokuapp.com/items/item/${itemData.itemid}`,
       edit,
@@ -96,6 +127,12 @@ const Item = props => {
               name="price"
               value={edit.price}
               onChange={handleChange}
+            />
+             <label htmlFor="price">Image:</label>
+            <input
+              id="price"
+              type="file"
+              onChange={handleImage}
             />
             <button>Submit</button>{" "}
           </>
