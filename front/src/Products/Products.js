@@ -7,6 +7,7 @@ import "./Product.css";
 const Products = () => {
   const [original, setOriginal] = useState([]);
   const [products, setProducts] = useState([]);
+  const [searchSet, setSearchSet] = useState([]);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState();
 
@@ -15,6 +16,7 @@ const Products = () => {
       .get("https://africanmarketplace.herokuapp.com/items/items")
       .then(res => {
         setOriginal([...res.data]);
+        setSearchSet([...res.data]);
         setProducts([...res.data]);
         setCategories(
           Array.from(new Set(res.data.map(product => product.category.type)))
@@ -34,19 +36,40 @@ const Products = () => {
 
       if (currentCategory === target.value) {
         setProducts([...original]);
+        setSearchSet([...original]);
         setCurrentCategory("");
       } else {
         setCurrentCategory(target.value);
         setProducts([
           ...original.filter(p => p.category.type === target.value)
         ]);
+        setSearchSet([
+          ...original.filter(p => p.category.type === target.value)
+        ]);
       }
     }
   };
 
+  const handleSearch = evt => {
+    const target = evt.target;
+    setProducts(
+      searchSet.filter(e => new RegExp(target.value, "i").test(e.name))
+    );
+  };
   return (
     <>
       <div className="products-container">
+        <div className="product-section">
+          <div className="product-section-search">
+            <label htmlFor="search">Search:</label>
+            <input
+              id="search"
+              onChange={handleSearch}
+              autoComplete="off"
+              type="search"
+            />
+          </div>
+        </div>
         <div className="product-section">
           <div className="product-section-category">
             <h1>Category</h1>

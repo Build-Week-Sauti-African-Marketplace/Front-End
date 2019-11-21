@@ -1,0 +1,66 @@
+.item-container {
+  min-height: 100vh;
+  background-image: linear-gradient(135deg, #a2bc43b8 0%, white 100%);
+  display: flex;
+  justify-content: center;
+
+  padding: 30px 0;
+}
+
+.item-container > form {
+  background-image: linear-gradient(135deg, #893825 0%, #110402db 100%);
+  border: 30px solid;
+  border-image-source: url("/assets/img/border.png");
+  border-image-slice: 61;
+  border-image-width: 30px;
+  border-image-outset: 0;
+  border-image-repeat: round;
+  padding: 30px;
+
+  color: #fff;
+  font-size: 2rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.item-container > form > h1 {
+  font-family: "Hanalei Fill", cursive;
+  text-decoration: underline;
+}
+
+.item-container > form > p {
+  margin: 0.5rem 0;
+}
+
+.item-container > form > input {
+  margin-bottom: 0.5rem;
+}
+
+.item-container > form > button,
+.item-container > form > input {
+  background-color: transparent;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 3rem;
+  color: #fff;
+  font-family: "Hanalei Fill", cursive;
+  border: 1px solid #d85e17;
+  border-radius: 10px;
+  padding: 10px 20px;
+  outline: none;
+}
+
+.item-container > form > label {
+  cursor: pointer;
+}
+
+.item-container > form > button {
+  cursor: pointer;
+  width: 40%;
+  color: #953333;
+  margin: 0 auto;
+}
+.item-container > form > button:hover {
+  color: #c74646;
+}
