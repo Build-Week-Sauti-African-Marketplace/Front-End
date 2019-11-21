@@ -61,7 +61,7 @@ function App(props) {
         </div>
       </nav>
       <Route exact path="/item" component={Item} />
-      <Route path="/" component={Products}></Route>
+      <Route exact path="/" component={Products}></Route>
       <Route exact path="/login" component={Login} />
       <Route exact path="/SignUp" component={SignUp} />
       <ProtectedRoute exact path="/delete" component={Search} />
