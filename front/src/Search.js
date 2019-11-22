@@ -8,7 +8,7 @@ const Search = props => {
 
   useEffect(() => {
     props.fetchData();
-  }, []);
+  }, [props]);
 
   const searchItems = e => {
     e.preventDefault();

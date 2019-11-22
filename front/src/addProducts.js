@@ -22,7 +22,6 @@ const AddProducts = props => {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       })
       .then(res => {
-        console.log(res.data);
         setCategories(res.data);
       });
     axios
@@ -30,7 +29,6 @@ const AddProducts = props => {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       })
       .then(res => {
-        console.log(res.data);
         setCurrencies(res.data);
       });
   }, []);
@@ -75,11 +73,9 @@ const AddProducts = props => {
           }
         }
       )
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
       props.history.push(`/profile/${localStorage.getItem("name")}`)
   };
-  
+
   return (
     <div className="item-container">
       <form onSubmit={handleSubmit}>

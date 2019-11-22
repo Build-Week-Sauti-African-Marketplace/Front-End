@@ -27,7 +27,7 @@ export function searchData(input) {
             Authorization:`Bearer ${localStorage.getItem("token")}`
         }
 })
-.then(res => dispatch({type:"SEARCH_DATA",payload:res.data.filter(i => i.name.toUpperCase() == input.toUpperCase())}))
+.then(res => dispatch({type:"SEARCH_DATA",payload:res.data.filter(i => i.name.toUpperCase() === input.toUpperCase())}))
 .catch(err => console.log(err))
     }
 

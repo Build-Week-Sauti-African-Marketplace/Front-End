@@ -32,7 +32,7 @@ const Item = props => {
         console.log(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [id]);
   const handleChange = e => {
     setEdit({
       ...edit,

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import {
-  BrowserRouter as 
+  BrowserRouter as Router,
   Route,
   NavLink,
   Link
@@ -28,13 +28,12 @@ function App() {
       .then(res => {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
-
-        console.log(res.data);
       })
       .catch(err => console.log(err));
   };
   return (
     <div>
+      <Router>
       <nav className="navbar">
         <div className="nav-list">
           <NavLink exact to="/" activeClassName="active">
@@ -68,6 +67,7 @@ function App() {
       <ProtectedRoute exact path="/profile" component={Profile} />
       <ProtectedRoute exact path={`/item/:itemid`} component={Item} />
       <ProtectedRoute exact path="/addProducts" component={AddProducts} />
+      </Router>
     </div>
   );
 }
