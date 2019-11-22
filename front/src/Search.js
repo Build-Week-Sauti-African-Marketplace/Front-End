@@ -42,7 +42,8 @@ const handleChange = e => {
 
 function mapStateToProps (state){
     return {
-    data:state.data
+    data:state.data,
+    
     }
   }
   const mapDispatchToProps = {

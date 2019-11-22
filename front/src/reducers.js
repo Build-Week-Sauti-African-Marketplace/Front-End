@@ -5,7 +5,8 @@ import React from "react"
 
 
 export const initialState = {
-data:[]
+data:[],
+
 }
 axios.get("https://africanmarketplace.herokuapp.com/items/items")
 .then(res => console.log(res.data))
@@ -27,6 +28,11 @@ axios.get("https://africanmarketplace.herokuapp.com/items/items")
                 ...state,
                 data:action.payload
             }
+            case "LOG_IN":
+                return{
+                    ...state,
+                    data:action.payload
+                }
            
 
         default :

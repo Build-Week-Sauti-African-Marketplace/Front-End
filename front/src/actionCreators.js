@@ -47,4 +47,19 @@ export function deleteItem(input) {
 
 }
 
+export function logIn() {
+    
+    return (dispatch) => {
+        axios.get("https://africanmarketplace.herokuapp.com/items/useritems", {
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+            .then(res => dispatch({type:"LOG_IN",payload:res.data}))
+            .catch(err => console.log(err))
+
+}
+
+}
+
 
