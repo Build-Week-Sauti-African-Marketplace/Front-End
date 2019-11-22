@@ -1,0 +1,27 @@
+.item-container > form > ul,
+.item-container > form ul button {
+  background-color: transparent;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 3rem;
+  color: #fff;
+  font-family: "Hanalei Fill", cursive;
+  border: 1px solid #d85e17;
+  border-radius: 10px;
+  padding: 10px 20px;
+  outline: none;
+}
+
+.item-container > form ul button {
+  color: red;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.item-container > form ul p {
+  margin: 0;
+}
+.delete-list {
+  display: flex;
+  justify-content: space-between;
+}
