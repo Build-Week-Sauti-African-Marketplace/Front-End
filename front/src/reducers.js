@@ -1,6 +1,4 @@
 import axios from "axios"
-import React from "react"
-
 
 
 
@@ -33,6 +31,11 @@ axios.get("https://africanmarketplace.herokuapp.com/items/items")
                     ...state,
                     data:action.payload
                 }
+                case "ADD_PHOTO":
+                    return{
+                        ...state,
+                        url:action.payload
+                    }
            
 
         default :

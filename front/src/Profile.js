@@ -1,36 +1,14 @@
-import React, { useState, useEffect } from "react"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import axios from "axios";
+import React,{ useEffect } from "react"
+import { BrowserRouter as Link } from "react-router-dom";
 import { connect } from "react-redux"
-import { fetchData,searchData,deleteItem,logIn } from "./actionCreators"
-
+import { logIn } from "./actionCreators"
 import { ProfileCon, MoveCon,  StyledH1, ItemsDiv, ItemsBoxes} from './ProfileStyles';
 
 const Profile = props => {
-    const [products, setProducts] = useState([])
-    // const logOut = e => {
-    //     e.preventDefault()
-    //     axios.get("https://africanmarketplace.herokuapp.com/logout",
-    //         {
-    //             headers: {
-    //                 Authorization: `Bearer ${localStorage.getItem("token")}`
-    //             }
-    //         })
-    //         .then(res => {
-    //             localStorage.removeItem("token")
-    //             localStorage.removeItem("name")
-    //             props.history.push("/")
-    //             console.log(res.data)
-    //         })
-    //         .catch(err => console.log(err))
-
-    // }
     useEffect(() => {
 props.logIn()
 
     }, [])
-console.log(props.data)
-
     return (
         <ProfileCon>
             <MoveCon>

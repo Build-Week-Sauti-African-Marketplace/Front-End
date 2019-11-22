@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export function fetchData(input) {
+export function fetchData() {
     
     return (dispatch) => {
         axios.get("https://africanmarketplace.herokuapp.com/items/useritems",
@@ -42,7 +42,7 @@ export function deleteItem(input) {
         }
         
 })
-.then(res => dispatch({type:"DELETE_ITEM",payload:input}))
+.then(dispatch({type:"DELETE_ITEM",payload:input}))
 }
 
 }
@@ -59,7 +59,25 @@ export function logIn() {
             .catch(err => console.log(err))
 
 }
+}
+export function addPhoto(input){
+    return(dispatch) =>{
+axios.post("https://africanmarketplace.herokuapp.com/image/upload",input,
+    {
+        headers:{
+         Authorization:`Bearer ${localStorage.getItem("token")}`,
+         "Content-Type": "multipart/form-data"}
+    
+        
+    },)
+    .then(res => {
+        console.log(res.data.url)
+        dispatch({type:"ADD_PHOTO",payload:res.data.url})
+    })
+    .catch(err => console.log(err))
 
 }
+}
+
 
 

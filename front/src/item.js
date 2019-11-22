@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import styled from 'styled-components'
 import "./item.css";
+import { connect } from "react-redux";
+import { addPhoto} from "./actionCreators";
 
 const Img = styled.img`
 height:50%;
@@ -31,8 +33,6 @@ const Item = props => {
       })
       .catch(err => console.log(err));
   }, []);
-  // console.log(itemData.category.type)
-  // for some reason you cant access the properties inside objects so the other properties
   const handleChange = e => {
     setEdit({
       ...edit,
@@ -43,19 +43,8 @@ const Item = props => {
     e.preventDefault()
     const formData = new FormData();
     formData.append("file", e.target.files[0])
-    Axios.post("https://africanmarketplace.herokuapp.com/image/upload",formData,
-    {
-        headers:{
-         Authorization:`Bearer ${localStorage.getItem("token")}`,
-         "Content-Type": "multipart/form-data"}
-    
-        
-    },)
-    .then(res => {
-        console.log(res.data.url)
-    setEdit({...edit,url:res.data.url})
-    })
-    .catch(err => console.log(err))
+    props.addPhoto(formData)
+    setEdit({...edit,url:props.url})
 }
   const handleSubmit = e => {
     e.preventDefault();
@@ -75,7 +64,7 @@ const Item = props => {
       `https://africanmarketplace.herokuapp.com/items/item/${itemData.itemid}`,
       edit,
       {
-        headers: {
+        headers:{
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json"
         }
@@ -153,4 +142,14 @@ const Item = props => {
     </div>
   );
 };
-export default Item;
+function mapStateToProps (state){
+  return {
+  url:state.url,
+  
+  }
+}
+const mapDispatchToProps = {
+addPhoto
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Item);

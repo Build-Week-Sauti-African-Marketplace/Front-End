@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import {
-  BrowserRouter as Router,
+  BrowserRouter as 
   Route,
   NavLink,
   Link
@@ -14,11 +14,9 @@ import AddProducts from "./addProducts";
 import ProtectedRoute from "./ProtectedRoute";
 import Search from "./Search";
 import Item from "./item";
-import { connect } from "react-redux";
 import axios from "axios";
 
-function App(props) {
-  console.log(props.data);
+function App() {
   const logOut = e => {
     e.preventDefault();
     axios
@@ -73,10 +71,6 @@ function App(props) {
     </div>
   );
 }
-function mapStateToProps(state) {
-  return {
-    data: state.data
-  };
-}
 
-export default connect(mapStateToProps)(App);
+
+export default App;
